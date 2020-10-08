@@ -1,18 +1,21 @@
 CC		= gcc 
-FLAGS	= -Wall -Wextra -Werror
-NAME	= -o my_ls
+FLAGS	= -g3 -fsanitize=address -Wall -Wextra -Werror
+NAME	= my_ls
 
-my_ls: my_ls.c
-	$(CC) my_ls.c $(NAME)
+all: $(NAME)
+
+$(NAME): my_ls.o
+	$(CC) $(FLAGS) my_ls.o -o $(NAME)
+
+main.o: main.c
+	$(CC) $(FLAGS) -c my_ls.c
 
 clean:
-	rm -f my_ls
-
-all: my_ls
+	rm *.o $(NAME)
 
 push:
-	git add my_ls.c Makefile
+	git add my_ls.c Makefile my_ls.h
 	git commit -m"auto commit"
 	git push  
 
-.PHONY: all my_ls clean
+.PHONY: all clean

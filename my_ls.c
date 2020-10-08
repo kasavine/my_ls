@@ -43,23 +43,19 @@ int main ()
         stat(dir->d_name, &filestat);
         if (S_ISDIR(filestat.st_mode))
         {
-            if (my_strcmp(dir->d_name, "." ) == 1 || my_strcmp(dir->d_name, ".." ) == 1)
-            {
-                strcpy(name[count], dir->d_name);
-                count++;
-            }
+            if (my_strcmp(dir->d_name, "." ) == 0 || my_strcmp(dir->d_name, ".." ) == 0)
+                continue;
+            else
+                strcpy(name[count++], dir->d_name);
+            
         }
         else
-        {
-            strcpy(name[count], dir->d_name);
-            count++;
-        }
+            strcpy(name[count++], dir->d_name);
     }
     // The stat and readlink utilities exit 0 on success, and >0 if an error occurs.
     while(count > 0)
     {
-        printf("%s\n", name[i]);
-        i++;
+        printf("%s\n", name[i++]);
         count--;
     }
     closedir(folder);
