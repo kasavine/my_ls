@@ -1,51 +1,64 @@
 #include "my_ls.h"
 
-t_opt* init_opt()
+void my_memset(char* buff, char c, int size)
 {
-	t_opt* opt = (t_opt*)malloc(sizeof(t_opt));
-	opt->a = 0;
-	opt->t = 0;
-	return opt;
+    int index = 0;
+    while (index < size)
+    {
+        buff[index] = c;
+        index++;
+    }
 }
 
-int is_opt(char *str)
+void my_bzero(char* buff, int size)
 {
-	if (str[0] == '-')
-	{
-		return 1;
-	}
-	return 0;
+    my_memset(buff, 0, size);
 }
 
-void set_opt(t_opt* opt, char *str)
+char* my_init(int size)
 {
-	int index = 0;
-	while (str[index])
-	{
-		if (str[index] == 'a')
-		{
-			opt->a = 1;
-		}
-		if (str[index] == 't')
-		{
-			opt->t = 1;
-		}
-		index++;
-	}
+    char* buff = (char*)malloc(size);
+    my_bzero(buff, size);
+    return buff;
 }
 
-t_opt* get_opt(int ac, char **av)
+int is_opt(char* str)
 {
-	t_opt* opt = init_opt();
-	int index = 0;
+    if (str[0] == '-')
+    {
+        return 1;
+    }
+    return 0;
+}
 
-	while (index < ac)
-	{
-		if (is_opt(av[index]) == 1)
-		{
-			set_opt(opt, av[index] + 1);
-		}
-		index++;
-	}
-	return opt;
+void set_opt(t_opt* opt, char* str)
+{
+    int index = 0;
+    while (str[index])
+    {
+        if (str[index] == 'a')
+        {
+            opt->a = 1;
+        }
+        if (str[index] == 't')
+        {
+            opt->t = 1;
+        }
+        index++;
+    }
+}
+
+t_opt* get_opt(int ac, char** av)
+{
+    t_opt* opt = (t_opt*)my_init(sizeof(t_opt));
+    int index = 0;
+    while (index < ac)
+    {
+        if (is_opt(av[index]) == 1)
+        {
+            set_opt(opt, av[index] + 1);
+        }
+        index++;
+    }
+    return opt;
 }
