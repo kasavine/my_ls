@@ -1,4 +1,4 @@
-### MY_LS - list directory contents
+### my_ls - list directory contents
 
 `my_ls [option] [directory] [file]`
 - option '-a' - sorting alphabetically 
@@ -7,11 +7,11 @@
 
 ### How to get and run
 
-###### Clone MY_LS
+###### Clone my_ls
 `git clone https://github.com/kasavine/MY_LS.git`
 
 ###### Change directory
-`cd MY_LS`
+`cd my_ls`
 
 ###### Compile & create ./my_ls executable
 `make all` 
