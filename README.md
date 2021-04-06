@@ -1,13 +1,11 @@
-## MY_LS - list directory contents
+### MY_LS - list directory contents
 
 `my_ls [option] [directory] [file]`
-- options: 
-    a - sorting alphabetically 
-    t - sorting by time created
-
+- option '-a' - sorting alphabetically 
+- option '-t' - sorting by time created
 - *my_ls is listing information about the FILEs*
 
-## How to start using
+### How to get and run
 
 ###### Clone MY_LS
 `git clone https://github.com/kasavine/MY_LS.git`
