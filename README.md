@@ -2,8 +2,8 @@
 
 `my_ls [option] [directory] [file]`
 - options: 
-    a - sorting alphabetically, 
-    t - sorting by time created`
+    a - sorting alphabetically 
+    t - sorting by time created
 
 - *my_ls is listing information about the FILEs*
 
